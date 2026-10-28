@@ -1,2 +1,19 @@
+# Dataset e file CSV pesanti
 data/*.csv
+
+# Checkpoint temporanei dei Jupyter Notebook
 .ipynb_checkpoints/
+*/.ipynb_checkpoints/
+
+# Ambienti Virtuali Python
+venv/
+venv313/
+.venv/
+
+# Cache di Python
+__pycache__/
+*.pyc
+
+# Configurazioni IDE e Sistema Operativo
+.vscode/
+.DS_Store
