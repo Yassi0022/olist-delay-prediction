@@ -1,13 +1,29 @@
-# Olist E-Commerce Analytics & Delay Prediction
+# Olist E-Commerce Analytics & Delay Prediction App
 
-An end-to-end **Data Analytics** and **Predictive Machine Learning** project analyzing delivery logistics and customer satisfaction for Brazilian e-commerce platform **Olist** (~96,000 orders).
+An end-to-end **Data Analytics**, **Predictive Machine Learning**, and **Streamlit Web Application** project analyzing delivery logistics and customer satisfaction for Brazilian e-commerce platform **Olist** (~99,400 orders).
 
-> 🇮🇹 **Note for Italian speakers:** The repository documentation (README) is written in English for international accessibility. The complete Jupyter Notebook (`olist_delay_prediction.ipynb`) and code comments are written in Italian.
+> 🇮🇹 **Note for Italian speakers:** The repository documentation (README) is written in English for international accessibility. The complete Jupyter Notebook (`olist_delay_prediction.ipynb`), Streamlit App (`app.py`), and code comments are written in Italian.
+
+---
+
+## Interactive Streamlit Web App
+
+The project includes an interactive web dashboard built with **Streamlit** that allows business stakeholders to analyze regional logistics risks and predict delivery delay probabilities at checkout in real time.
+
+### Key Web App Features:
+1. **Executive KPI Dashboard:** Real-time business metrics comparing overall delay rate (6.66%) vs. review scores (4.29 ⭐ vs 2.27 ⭐).
+2. **Interactive Logistics Map:** A dynamic South American map powered by **Plotly Express** visualizing delay rates across all 27 Brazilian states (highlighting high-risk regions like Alagoas at 20.81% and Maranhão at 17.13%).
+3. **Real-Time Delay Risk Predictor:** An interactive form allowing users to input order details (financial value, estimated delivery days, destination state, purchase month, and day of week) to receive an instant risk assessment (Low, Moderate, High) powered by our trained **XGBoost** model.
+
+### Application Screenshots
+| Executive KPIs & Delay Map | Delay Risk Predictor |
+| :---: | :---: |
+| ![KPIs and Map](path/to/foto1.png) | ![Predictor](path/to/foto2.png) |
 
 ---
 
 ## Executive Summary
-In e-commerce logistics, delivery delays are the primary driver of customer dissatisfaction. Analyzing over 96,000 orders reveals that delivery delays account for **6.66% of total orders (~6,380 orders)**, but cause a **47% drop in customer review scores** (from **4.29 to 2.27 stars**).
+In e-commerce logistics, delivery delays are the primary driver of customer dissatisfaction. Analyzing over 99,000 orders reveals that delivery delays account for **6.66% of total orders (~6,380 orders)**, but cause a **47% drop in customer review scores** (from **4.29 to 2.27 stars**).
 
 This project develops an end-to-end Machine Learning pipeline to **predict delayed orders at checkout**, enabling proactive intervention before dispatch.
 
@@ -16,16 +32,17 @@ This project develops an end-to-end Machine Learning pipeline to **predict delay
 ## Key Business Findings
 * **Global Delay Rate:** 6.66% of total transactions.
 * **Customer Rating Impact:** Ratings plummet from 4.29 stars (on-time) to 2.27 stars (delayed).
-* **Geographical Disparity:** Northern and Northeastern Brazilian states (e.g., Alagoas, Maranhão) record delay rates exceeding 15–20%, compared to 4.4% in São Paulo (SP).
-* **Primary Drivers:** Order financial value (`totale_pagamento`), estimated delivery window (`stima_giorni_consegna`), and seasonality are the strongest predictors of delivery bottlenecks.
+* **Geographical Disparity:** Northern and Northeastern Brazilian states (e.g., Alagoas, Maranhão, Sergipe) record delay rates exceeding 14–20%, compared to 4.43% in São Paulo (SP).
+* **Primary Drivers:** Order financial value (`totale_pagamento`), estimated delivery window (`stima_giorni_consegna`), destination state, and seasonality are the strongest predictors of delivery bottlenecks.
 
 ---
 
 ## Tech Stack & Methodology
 * **Language:** Python 3.10+
-* **Data Processing:** Pandas, NumPy
-* **Data Visualization:** Seaborn, Matplotlib
-* **Machine Learning:** Scikit-Learn, XGBoost (`XGBClassifier`, `RandomForestClassifier`, `LogisticRegression`)
+* **Web Framework:** Streamlit
+* **Data Processing & Analytics:** Pandas, NumPy
+* **Data Visualization:** Plotly Express, Seaborn, Matplotlib
+* **Machine Learning:** Scikit-Learn, XGBoost (`XGBClassifier`, `RandomForestClassifier`, `LogisticRegression`), Joblib
 * **Database & Querying:** SQLite, SQL
 
 ---
@@ -44,20 +61,9 @@ Due to severe class imbalance (6.66% positive class `1`), models were evaluated 
 
 ---
 
-## Strategic Business Recommendations
-1. **High-Value Order Pre-Alerting:** Implement automated tracking flags for high-value orders (`totale_pagamento`) bound for remote or historically delayed states (e.g., RJ and Northeast region).
-2. **Dynamic Seasonal Buffers:** Automatically extend estimated delivery dates (`stima_giorni_consegna`) by 2–3 days during peak sales months (e.g., Black Friday period) to align customer expectations and protect review scores.
-3. **Regional SLA Renegotiation:** Review carrier Service Level Agreements (SLAs) and local fulfillment nodes in critical regions like Rio de Janeiro (RJ).
+## How to Run the App Locally
 
----
-
-## Repository Structure
-```text
-olist-delay-prediction/
-├── data/                       # Raw and processed datasets (.csv)
-│   └── ecommerce_clean.csv
-├── notebooks/                  # Jupyter notebooks containing full EDA & ML pipeline
-│   └── olist_delay_prediction.ipynb
-├── .gitignore                  # Git ignore rules for data files and checkpoints
-├── README.md                   # Executive project summary
-└── requirements.txt            # Python dependencies
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/YOUR_USERNAME/olist-delay-prediction.git](https://github.com/YOUR_USERNAME/olist-delay-prediction.git)
+   cd olist-delay-prediction
